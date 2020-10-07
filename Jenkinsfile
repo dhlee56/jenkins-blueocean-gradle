@@ -5,9 +5,6 @@ pipeline {
     }
 
   }
-  tools {
-    gradle "gradle6"
-  }
   stages {
     stage('Source') {
       steps {
@@ -21,5 +18,8 @@ pipeline {
       }
     }
 
+  }
+  tools {
+    gradle 'gradle6'
   }
 }
