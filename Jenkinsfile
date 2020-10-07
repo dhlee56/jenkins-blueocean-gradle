@@ -26,7 +26,10 @@ pipeline {
 
     stage('Docker push') {
       steps {
-        sh 'docker push dhlee56/ch02tacos'
+        sh '''
+
+docker login -u dhlee56 -p TGByhn56#
+'''
       }
     }
 
