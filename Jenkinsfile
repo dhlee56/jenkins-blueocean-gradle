@@ -30,6 +30,13 @@ pipeline {
 
 docker login -u dhlee56 -p TGByhn56#
 '''
+        sh 'docker push dhlee56/ch02tacos'
+      }
+    }
+
+    stage('End') {
+      steps {
+        echo 'COMPLETE'
       }
     }
 
