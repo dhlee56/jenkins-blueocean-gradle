@@ -15,6 +15,7 @@ pipeline {
     stage('Build') {
       steps {
         tool 'gradle6'
+        sh 'gradle bootJar'
       }
     }
 
