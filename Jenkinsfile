@@ -26,7 +26,7 @@ pipeline {
 
     stage('Docker push') {
       steps {
-        sh 'docker run -it  -p 8081:8081 dhlee56/ch02tacos'
+        sh 'docker push dhlee56/ch02tacos'
       }
     }
 
