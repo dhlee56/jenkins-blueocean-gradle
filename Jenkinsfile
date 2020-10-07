@@ -24,6 +24,12 @@ pipeline {
       }
     }
 
+    stage('Docker push') {
+      steps {
+        sh 'echo "docker run or push"'
+      }
+    }
+
   }
   tools {
     gradle 'gradle6'
