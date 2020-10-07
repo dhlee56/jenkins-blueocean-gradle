@@ -5,6 +5,9 @@ pipeline {
     }
 
   }
+  tools {
+    gradle "GRADLE LATEST"
+  }
   stages {
     stage('Source') {
       steps {
@@ -14,7 +17,6 @@ pipeline {
 
     stage('Build') {
       steps {
-        tool 'gradle6'
         sh 'gradle bootJar'
       }
     }
