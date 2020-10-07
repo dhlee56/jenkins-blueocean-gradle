@@ -12,5 +12,11 @@ pipeline {
       }
     }
 
+    stage('Build') {
+      steps {
+        tool 'gradle6'
+      }
+    }
+
   }
 }
