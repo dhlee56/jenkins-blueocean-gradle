@@ -18,9 +18,9 @@ pipeline {
       }
     }
 
-    stage('Run') {
+    stage('Build docker file') {
       steps {
-        sh 'java -jar build/libs/sia5.ch02-0.0.1-SNAPSHOT.jar'
+        sh 'docker build --build-arg JAR_FILE=build/libs/*.jar -t dhlee56/ch02tacos .'
       }
     }
 
