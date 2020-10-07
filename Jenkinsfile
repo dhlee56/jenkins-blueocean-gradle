@@ -6,7 +6,7 @@ pipeline {
 
   }
   tools {
-    gradle "GRADLE LATEST"
+    gradle "gradle6"
   }
   stages {
     stage('Source') {
