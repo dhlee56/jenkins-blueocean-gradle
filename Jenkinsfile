@@ -18,6 +18,12 @@ pipeline {
       }
     }
 
+    stage('Run') {
+      steps {
+        sh 'java -jar build/libs/sia5.ch02-0.0.1-SNAPSHOT.jar'
+      }
+    }
+
   }
   tools {
     gradle 'gradle6'
