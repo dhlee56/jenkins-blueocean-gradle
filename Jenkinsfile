@@ -36,7 +36,7 @@ pipeline {
       }
     }
 
-    stage('') {
+    stage('Final Stage') {
       steps {
         echo 'Done'
       }
