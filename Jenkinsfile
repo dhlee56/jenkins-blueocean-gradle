@@ -26,17 +26,19 @@ pipeline {
 
     stage('Docker push') {
       steps {
-withCredentials([usernamePassword(credentialsId: 'githubcred', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]){    
-    sh('''
+        withCredentials(bindings: [usernamePassword(credentialsId: 'githubcred', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]) {
+          sh '''
         docker login -u $GIT_USERNAME -p $GIT_PASSWORD
-    ''')}
+    '''
+        }
+
         sh 'docker push dhlee56/ch02tacos'
       }
     }
 
-    stage('End') {
+    stage('') {
       steps {
-        echo 'COMPLETE'
+        echo 'Done'
       }
     }
 
