@@ -38,7 +38,14 @@ pipeline {
 
     stage('Final Stage') {
       steps {
-        echo 'Done'
+        script {
+          sshagent(['dev-server'])
+
+          {
+            sh "ssh -o StrictHostKeyChecking=no dhlee@155.230.16.19 docker run -p 8081:8081 -d --name my-app dhlee56/ch02tacos"
+          }
+        }
+
       }
     }
 
