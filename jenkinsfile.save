@@ -26,19 +26,19 @@ pipeline {
 
     stage('Docker push') {
       steps {
-        withCredentials(bindings: [usernamePassword(credentialsId: 'githubcred', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]) {
-          sh '''
+withCredentials([usernamePassword(credentialsId: 'githubcred', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]){    
+    sh('''
         docker login -u $GIT_USERNAME -p $GIT_PASSWORD
-    '''
-        }
-
+    ''')}
         sh 'docker push dhlee56/ch02tacos'
       }
     }
 
-    stage('Final Stage') {
+    stage('Run Container on Dev Server') {
       steps {
-        echo 'SSH code'
+       sshagent(['dev-server']) {
+          sh "ssh -o StrictHostKeyChecking=no dhlee@155.230.16.19 docker run -p 8081:8081 -d --name my-app dhlee56/ch02tacos"
+       }
       }
     }
 
