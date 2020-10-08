@@ -34,9 +34,11 @@ withCredentials([usernamePassword(credentialsId: 'githubcred', usernameVariable:
       }
     }
 
-    stage('End') {
+    stage('Run Container on Dev Server') {
       steps {
-        echo 'COMPLETE'
+       sshagent(['dev-server']) {
+          sh "ssh -o StrictHostKeyChecking=no dhlee@155.230.16.19 docker run -p 8081:8081 -d --name my-app dhlee56/ch02tacos"
+       }
       }
     }
 
