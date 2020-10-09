@@ -36,11 +36,14 @@ pipeline {
       }
     }
 
-    stage('Final Stage') {
+    stage('Run Container on Dev Server') {
       steps {
-        echo 'SSH code'
+       sshagent(['ssh206']) {
+          sh "ssh -o StrictHostKeyChecking=no dhlee@155.230.25.206 docker run -p 8081:8081 -d dhlee56/ch02tacos"
+       }
       }
     }
+
 
   }
   tools {
